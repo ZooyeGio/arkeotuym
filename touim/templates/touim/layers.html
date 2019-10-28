@@ -1,0 +1,121 @@
+{% extends "touim/base.html" %}
+{% block map_active %}active{% endblock %}
+{% block content %}
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Leaflet Control.Layers</title>
+  <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin=""/>
+
+  <!-- Load Leaflet from CDN -->
+<!--   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
+  integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+  crossorigin=""/>
+  <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
+  integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
+  crossorigin=""></script> -->
+
+  <!-- Load Esri Leaflet from CDN -->
+  <<!-- script src="https://unpkg.com/esri-leaflet@2.3.0/dist/esri-leaflet.js"
+  integrity="sha512-1tScwpjXwwnm6tTva0l0/ZgM3rYNbdyMj5q6RSQMbNX6EUMhYDE3pMRGZaT41zHEvLoWEK7qFEJmZDOoDMU7/Q=="
+  crossorigin=""></script> -->
+
+  <style>
+    body { margin:0; padding:0; }
+    #map { position: absolute; top:50px; bottom:0; right:0; left:0; }
+
+    .leaflet-popup-content-wrapper {
+      background-color: gray;
+      opacity: 0.9;
+      width: 290px;
+      font-size: 14pt;
+      color: white;
+      text-align: center;
+    }
+
+    .leaflet-popup-tip {
+      background-color: gray;
+    }
+    .glyph-search {
+      margin-right: 0
+
+    }
+  </style>
+</head>
+<body>
+
+<div id="map"></div>
+
+<script>
+/*for switch*/
+  var gray = L.layerGroup();
+
+  // more than one service can be grouped together and passed to the control together
+  L.esri.basemapLayer('DarkGray').addTo(gray);
+  L.esri.basemapLayer('GrayLabels').addTo(gray);
+
+/*fin for switch*/
+
+  //sample data values for populate map
+  var data = [
+    {"loc":[61.985803246336188, 129.298710419985997], "title":"Усун-Эбе I"},
+    {"loc":[62.088491705049411, 129.304300411588162], "title":"Ферменное озеро"},
+    {"loc":[61.999262750194857, 129.303276611526189], "title":"Капитоновка"},
+    {"loc":[62.288307030702407, 129.277373628272034], "title":"Красное озеро"},
+    {"loc":[62.288307030702407, 129.576290557364138], "title":"Владимировка II"},
+    {"loc":[61.80290541498532, 129.576290557364138], "title":"Энергетик I"},
+    {"loc":[61.999988888888888, 129.485146215603152], "title":"Нелегер III"},  
+    {"loc":[61.90777777777, 129.5], "title":"Владимировка V"}
+  ];
+
+  var map = L.map('map', {
+    center: [62.0, 129.6],
+    zoom: 8.5,
+    layers: [gray]
+  });
+
+  var baseLayers = {
+    Grayscale: gray,
+    Streetmap: L.esri.basemapLayer('Streets')
+  };
+    // image raster
+  lyrKernel = L.imageOverlay('kernel5000-EPSG4326.png', [[62.3, 130.2], [61.8, 129.2]]);
+
+  var markersLayer = new L.LayerGroup();  //layer contain searched elements
+  
+  map.addLayer(markersLayer);
+
+  var controlSearch = new L.Control.Search({
+    position:'topright',    
+    layer: markersLayer,
+    initial: false,
+    zoom: 12,
+    marker: false
+  });
+
+  map.addControl( controlSearch );
+
+  ////////////populate map with markers from sample data
+  for(i in data) {
+    var title = data[i].title,  //value searched
+      loc = data[i].loc,    //position found
+      marker = new L.Marker(new L.latLng(loc), {title: title} );//se property searched
+    marker.bindPopup(title );
+    markersLayer.addLayer(marker);
+  }
+
+  var overlays = {
+    /*'U.S. States': states,
+    'Image Kernel Density':lyrKernel*/
+  };
+L.control.scale().addTo(map);
+L.control.layers(baseLayers, overlays).addTo(map);
+</script>
+
+</body>
+</html>
+
+{% endblock content %}
+
+<!-- https://github.com/stefanocudini/leaflet-search -->

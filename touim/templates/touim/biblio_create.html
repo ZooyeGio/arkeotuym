@@ -1,0 +1,40 @@
+{% extends "touim/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<div class="container-fluid">
+    <div class="row">
+        <!-- Left Site Info -->
+        <div class="col-sm-4 col-md-3">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <i class="glyphicon glyphicon-book" style="font-size:150px;text-shadow:2px 2px 4px #000000;"></i>
+                    <i class="glyphicon glyphicon-plus-sign" style="font-size:50px;text-shadow:2px 2px 4px #000000;padding: 15px;margin-top: 10px;"></i>
+                </div>
+            </div>
+        </div>
+        <!-- Right Mobilier Info -->
+        <div class="col-sm-8 col-md-9">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h3>Добавить новый библиографический ресурс</h3>
+                    {% if error_message %}
+                        <p><strong>{{ error_message }}</strong></p>
+                    {% endif %}
+                    <form class="form-horizontal" role="form" action="" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <input type="hidden" name="site" value="{{ site }}">
+                        {% include 'touim/form_template.html' %}
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit" class="btn btn-success">Подтвердить</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

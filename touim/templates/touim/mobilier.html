@@ -1,0 +1,63 @@
+{% extends "touim/base.html" %}
+{% block mobilier_active %}active{% endblock %}
+{% block content %}
+
+<div class="container"> <!-- sites-container container-fluid -->
+    <div class="row">
+        <div class="col-sm-12">
+            <h3 class="titre-page">Археологические находки долины Туймада</h3>
+            <div class="panel panel-default" style="background-color: #C78E50;">
+                <div class="panel-body">
+                    <table class="table">
+                        <thead>
+                            <tr><b>
+                                <th>N°</th>
+                                <th>Name</th>
+                                <th>Image</th>
+                                <th>Site</th></b>
+                            </tr>
+                        </thead>
+                        <tbody style="color: black; font-family: Arial, sans-serif;">
+                            {% for mobilier in mobiliers %}
+                                <tr>
+                                    <td>{{ mobilier.id }}</td>
+                                    <td>{{ mobilier.mob_nom }}</td>
+                                    <td>
+                                        <a  target="_blank" href="{{ mobilier.mob_logo.url }}">
+                                            <img src="{{ mobilier.mob_logo.url }}" class="img-responsive-mobilier"/>
+                                        </a>
+                                    </td>
+                                    <td>{{ mobilier.site.sitename }}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <p class="pagination">
+    {% if is_paginated %}
+
+      {% if page_obj.has_previous %}
+        <a class="btn btn-default mb-4" href="?page=1">First</a>
+        <a class="btn btn-default mb-4" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+      {% endif %}
+
+      {% for num in page_obj.paginator.page_range %}
+        {% if page_obj.number == num %}
+          <a class="btn btn-default mb-4" href="?page={{ num }}">{{ num }}</a>
+        {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+          <a class="btn btn-default mb-4" href="?page={{ num }}">{{ num }}</a>
+        {% endif %}
+      {% endfor %}
+
+      {% if page_obj.has_next %}
+        <a class="btn btn-default mb-4" href="?page={{ page_obj.next_page_number }}">Next</a>
+        <a class="btn btn-default mb-4" href="?page={{ page_obj.paginator.num_pages }}">Last</a>
+      {% endif %}
+
+    {% endif %}
+</p>
+</div>
+{% endblock content %}

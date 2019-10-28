@@ -1,0 +1,45 @@
+{% extends "touim/base.html" %}
+{% block biblios_active %}active{% endblock %}
+{% block content %}
+<div class="container">
+<div class="sites-container container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="add-site">
+                <a href="{% url 'biblio_create' %}" style="color: white;">
+                    <button class="btn btn-success">
+                        <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>&nbsp; ПОПОЛНИТЬ БИБЛИОГРАФИЮ
+                    </button>
+                </a>
+            </div>
+            <h3 class="titre-page">Публикации, посвященные археологии долины Туймада</h3>
+            <div class="panel panel-default" style="background-color: #11141B; color: gray;">
+                <div class="panel-body">
+                    <table class="table">
+                        <thead>
+                            <tr style="color: #ccc;">
+                                <th>Названиe</th>
+                                <th>Коллекция</th>
+                                <th>Автор</th>
+                                <th>Год</th>
+                            </tr>
+                        </thead>
+                        <tbody style="color: #ccc;">
+                            {% for biblio in biblios %}
+                                <tr>
+                                    <td>{{ biblio.titre }}</td>
+                                    <td>{{ biblio.coll }}</td>
+                                    <td>{{ biblio.autor }}</td>
+                                    <td>{{ biblio.year }}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+</div>
+</div>
+</div>
+
+{% endblock content %}

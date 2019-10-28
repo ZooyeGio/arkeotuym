@@ -1,0 +1,50 @@
+{% extends "touim/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12 col-md-7">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h3>Добвить новую стоянку</h3>
+                    {% if error_message %}
+                        <p><strong>{{ error_message }}</strong></p>
+                    {% endif %}
+                    <form class="form-horizontal" role="form" action="" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {% include 'touim/form_template.html' %}
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit" class="btn btn-success">Подтвердить</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-5">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h3>ArkeoTuym - это...</h3>
+                    <p>...приложение, которое позволяет записывать и хранить данные по археологии Якутии (стоянки, найденные на них артефакты, публикации, карты и графики). </p>
+                    <ul>ArkeoTuym также включает в себя интекрактивную карту, которая:
+                        <li>позволяет визуализировать географическое положение памятников археологии</li>
+                        <li>предоставляет возможность отображения фоновых карт по выбору</li>
+                        <li>имеет функцию поиска стоянок по их названию</li>
+                        <li>содержит краткую информацию о каждой стоянке</li>
+                    </ul>
+                    <h3>Как пользоваться ресурсом?</h3>
+                    <p>Сперва нужно создать стоянку, нажав на зелёную кнопку на главной странице. После добавления стоянки, можно добавить найденный на ней артефакт и библиографический источник</p>
+                    <h3>Какими должны быть характеристики данных?</h3>
+                    <ul>
+                        <li>Добавляемые изображения должны быть в форматах .jpg, .gif, или .png</li>
+                        <li>Один файл не должен превышать 2Мб.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

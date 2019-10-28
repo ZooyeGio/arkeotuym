@@ -1,0 +1,79 @@
+{% extends "touim/base.html" %}
+{% block about_active %}active{% endblock %}
+{% block content %}
+    <div class="container formstyle" style="background-color: #252B35; color:gray;">
+        <div class="row">
+            <div class="col-sm-12 col-md-7" style="letter-spacing: 1px;">
+                <div class="profiletitre">
+                    <h2>This is Arkeotuym application</h2>
+                </div>
+                <p>Это приложение позволяет записывать и хранить данные по археологии Якутии (стоянки, найденные на них артефакты, библиографические источники, карты и графики).
+                <ul>ArkeoTuym также включает в себя интекрактивную карту, которая: 
+                    <li>визуализирует географическое положение памятников археологии</li>
+                    <li>предоставляет возможность отображения фоновых карт по выбору</li>
+                    <li>имеет функцию поиска стоянок по их названию</li>
+                    <li>содержит краткую информацию о каждой стоянке</li>
+                </ul>
+                <h4><b>Как пользоваться ресурсом?</b></h4>
+                <p>Сперва нужно создать стоянку, нажав на зелёную кнопку на главной странице. После добавления стоянки, можно добавить найденный на ней артефакт и библиографический источник</p>
+                <h4>Характеристики загружаемых данных</h4>
+                <ul>
+                    <li>Добавляемые изображения должны быть в формате .jpg, .gif, или .png</li>
+                    <li>Вес одиного файла не должен превышать 2Мб.</li>
+                </ul>
+                <h4><b>Attention !</b></h4>
+                <p>В этом приложении использованы псевдоданные. Подлинные георгафические координаты археологических стоянок заменены на местоположения, выбранные случайным образом.</p>
+
+            </div>
+            <div class="col-sm-12 col-md-5">
+                <div class="panel-body" style="background-color: #252B35; margin-top: 40px;">
+                    {% for image in images.all %}
+                        {% if image.id_map == 3 %}
+                            <img src="{{ image.mapfile.url }}" style="height: 410px;">
+                        {% else %}
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+
+                <!-- <div style="text-align: center;">
+                    <h2 style="text-decoration: underline orange;">Attributions/crédits:</h2>
+                    <p>Some informations about sources of data</p>
+                    <p>Some informations about sources of data</p>
+                    <p>Some informations about sources of data</p>
+                    <h4 style="text-decoration: underline orange;"><b>Contacts:</b></h4>
+                    <p style="text-decoration: underline orange;"></p>
+                    <p>Pigeon post: pigeon Sam</p>
+                    <p>Email: kte.ent@gamil.com</p>
+                </p> -->
+
+            <hr class="divider light my-4">
+            <div class = "cont-attrib">
+                <hr class="divider light my-4" style="width: 976px;">
+                <h1 class="title-center">attributions</h1>
+                <hr class="divider light my-4" style="width: 50px;">
+                <!-- <p class="text-center atribs">Lorem ipsum dolor sit amet, consectetur adipiscing. The underline isn't removed from this colored<a class="alink" target="_blank" href="#"> "some-source-link.com"</a>
+                </p> -->
+                <div class="text-center atribs">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing. The underline isn't removed from this colored<a class="alink" target="_blank" href="#"> "some-source-link.com"</a></p>
+                    <p>lorem ipsum dolor -- https://loremipsum.io/</p>
+                    <p>ipsum dolor sit amet -- https://loremipsum.io/</p>
+                    <p>consectetur adipiscing elit, sed do eiusmod -- https://loremipsum.io/</p>
+                    <p>tempor incididunt -- https://loremipsum.io/</p>
+                    <p>ornare arcu odio ut sem -- https://loremipsum.io/</p>
+                </div>
+            <hr class="divider light my-4" style="width: 976px;">
+                <h1 class="title-center">contacts</h1>
+                <hr class="divider light my-4" style="width: 50px;">
+                <div class="text-center contacts">
+                    <span class="glyphicon glyphicon-ok"></span> Pigeon post: pigeon Sam
+                    <span class="glyphicon glyphicon-envelope"></span> kte.ent@gamil.com
+                </div>
+                <hr class="divider light my-4" style="width: 976px;">
+            </div>
+
+
+        </div>
+    </div>
+
+{% endblock content %}

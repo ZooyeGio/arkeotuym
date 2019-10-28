@@ -1,0 +1,29 @@
+{% extends "touim/base.html" %}
+{% block carto_active %}active{% endblock %}
+{% block content %}
+<div class="sites-container container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <h3 style="margin-left: 10px; padding: 10px; color: gray;">Карты и графики</h3>
+        </div>
+            {% for carto in cartos.all %}
+                <div class="col_lg_2">
+                    <div class="blocky">
+                        <a target="_blank" href="{{ carto.mapfile.url }}">
+                            <img src="{{ carto.mapfile.url }}" class="img-responsive"/>
+                         </a>
+                        <div class="caption">
+                            <h4>{{ carto.mapname }}</h4>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+<!--         <ul class="nav nav-pills">
+            <li role="presentation" class="active" style="margin-bottom: 20px; margin-right: 70px;">
+                <a href="#">Добавить новую карту или график</a>
+            </li>
+        </ul> -->
+</div>
+
+{% endblock content %}
