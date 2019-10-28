@@ -1,0 +1,242 @@
+body {
+    margin-top: 50px;
+    background-color: #1B222A;
+}
+
+ul.errorlist {
+    padding-left: 0;
+}
+ul.errorlist > li {
+    list-style: none;
+}
+.panel {
+  margin-top: 20px;
+}
+.navbar {
+    border-radius: 0;
+    background-color: #09121B;
+    overflow: hidden;
+    position: fixed;
+    top:0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    box-shadow: 0 1px 7px black;
+    font-size: 13px;
+}
+
+.navbar-brand {
+    font-family: Arial, 'ridin dirty', sans-serif;
+}
+.logo {
+  font-family: Helvetica, Calibri, arial, ridin dirty, sans-serif;
+  font-size: 14pt;
+  color: white;
+}
+.logo > b {
+  color:orange;
+}
+
+.glyphicon-star {
+    color: #CCCCCC;
+    font-size: 16px;
+}
+.add-site {
+  margin-top:20px;
+  float: right;
+  color: black;
+}
+
+.glyphicon-star.active {
+    color: #FDB230;
+}
+
+/*Pour la page Staticmap :*/
+.col_lg_2 {
+    width: 320px;
+    float: left;
+/*    margin-top: 10px;*/
+    text-align: center;
+}
+.titre-page {
+  color: gray
+}
+/*block's height*/
+.blocky {
+    /*width: 800px;*/
+    height: 270px;
+    display: block; 
+    padding: 4px;
+    margin-left: 30px;
+    margin-bottom: 40px;
+    line-height: 1.42857143;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    transition: border .2s ease-in-out;
+}
+/*image's height*/
+.blocky a > img {
+    height: 200px;
+}
+
+.row {  
+  display: flex;
+  flex-wrap: wrap;
+}
+.side {
+  flex: 20%;
+  background-color: #1B222A;
+  padding: 20px;
+  overflow: scroll; /*ajout*/
+  height: 530px;  /*à modifier le taille pour que ça soit adapté à tt les écrans*/
+  color: gray;
+}
+
+/* Main column */
+.main {   
+  flex: 60%;
+  background-color: white;
+}
+/*for popup*/
+#map {
+  position: relative;
+}
+/*for index html les blocks-sites (2 balises)*/
+.collg2 {
+  width: 260px;
+  float: left;
+  /*text-align: center;*/
+}
+.nav-pills {
+  float:right;
+}
+h5 {
+  text-align: center;
+}
+.pagination {
+  margin-bottom: 30px;
+}
+.img-responsive-mobilier {
+  height: 32px;
+  width: 42px;
+}
+/*for sites_detail html*/
+.container-fluid {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -15px;
+    margin-right: -15px;
+}
+.colsm8, .colmd9, .colsm4 {
+    position: relative;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+.colmd9 {
+    width: 75%;
+    float: left;
+}
+.colmd3 {
+    width: 25%;
+    float: left;
+}
+.panel {
+/*    margin-top: 20px;
+    margin-bottom: 20px;*/
+    background-color: #fff;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    box-shadow: 0 1px 1px rgba(0,0,0,.05);
+}
+.panel-default {
+    border-color: #ddd;
+}
+.panel-body {
+    padding: 15px;
+}
+* {
+    box-sizing: border-box;
+}
+.container {
+  width: 1270px;
+}
+.delete-site {
+  color:red;
+  margin-top: 30px;
+}
+.are-you-sure {
+  color:#ccc;
+}
+.updatesite {
+  color: white;
+  margin-top: 30px;
+}
+.formstyle {
+  color: white;
+}
+.profiletitre {
+  color: orange;
+  margin-top: 30px;
+}
+.img-prof {
+  height: 90px;
+  width: 90px;
+  margin-top:20px;
+  float: left;
+  margin-right:20px;
+  margin-bottom: 10px;
+}
+.container-user {
+  width: 600px;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+.narrow-select {
+  height:200px; 
+  width:520px;
+}
+.littleinfo {
+  color: gray;
+  font-size: 10pt;
+  font-family: Arial, sans-serif;
+}
+
+.cont-attrib {
+  /*border: 1px solid gray;*/
+  padding: 15px;
+  margin-top: 30px;
+  margin-bottom: 50px;
+}
+.title-center {
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 18pt;
+  /*color: #4CAF50; #F4623A;*/
+  color: orange;
+}
+.text-center {
+  text-indent: 50px;
+  letter-spacing: 1px;
+  margin-right: 130px;
+  margin-left: 130px;
+}
+.atribs {
+  text-align: justify
+}
+.contacts {
+  text-align: center;
+}
+.alink {
+  text-decoration: none;
+  color: #008CBA;
+}
