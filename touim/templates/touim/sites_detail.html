@@ -1,6 +1,6 @@
 {% extends "touim/base.html" %}
 {% block content %}
-
+{% if user.id == 1 or user.id == 12 %}
 <div class="container-fluid songs-container">
     <div class="row">
         <!-- Left sidebar: -->
@@ -8,14 +8,14 @@
             <div class="panel panel-default" style="background-color: #A09571;"> <!--#E3C67D/ #EBEAEC -->
                 <div class="panel-body">
                     <!-- update and delete site -->
-                    {% if object.user == user %}
+                    
                         <p style="text-align: right;">
-                            <a class="btn btn-primary btn-sm mt-1 mb-1" href="{% url 'site-update' object.id %}">Update</a>
+                            <a class="btn btn-primary btn-sm mt-1 mb-1" href="{% url 'site-update' object.id %}">Редактировать</a>
                             <!-- <a href="{% url 'site-update' object.id %}"><button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-edit"></span></button></a> -->
-                            <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'site-delete' object.id %}">Delete</a>
+                            <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'site-delete' object.id %}">Удалить</a>
                             <!-- <a href="{% url 'site-delete' object.id %}"><button type="button" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></button></a>  -->              
                         </p>
-                    {% endif %}                  
+                                     
                     <p><h2>{{ object.sitename }}</h2></p>
                     <p><b>Период: </b>{{ object.periode }}</p>
                     <p><b>Год открытия: </b>{{ object.discovered }}</p>
@@ -157,5 +157,7 @@
         </div>
     </div>
 </div> <!-- close site-container div -->
-
+{% else %}
+<h3 class="please">Пожалуйста, войдите в приложение под именем Postgres, чтобы увидеть данные о стоянках</h3>
+{% endif %}
 {% endblock content %}

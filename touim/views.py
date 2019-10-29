@@ -8,7 +8,7 @@ from django.views.generic import (
 	UpdateView,
 	DeleteView
 	)
-from .models import Sites, Biblio, Staticmap, Mobiliers
+from .models import Sites, Biblio, Staticmap, Mobiliers, Images
 from .forms import SiteForm, MobiliersCreateForm, BiblioCreateForm
 from django.utils.translation import gettext_lazy as _
 from django.contrib.auth.decorators import login_required
@@ -77,6 +77,7 @@ def site_create(request):
 class SitesUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 	model = Sites
 	fields = '__all__'
+	exclude = ['user', 'biblio']
 
 
 	def form_valid(self, form):
@@ -119,7 +120,7 @@ def mobilier_create(request, site_id):
                 context = {
                     'site':site,
                     'm_form':m_form,
-                    'error_message':'You already added that mobilier'
+                    'error_message':'You already added that object'
                 }
                 return render(request, 'touim/mobilier_create.html', context)
         mobilier = m_form.save(commit=False)
@@ -158,7 +159,7 @@ class MobiliersDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 
 
 def about(request):
-	images = Staticmap.objects.all()
+	images = Images.objects.all()
 	return render(request, 'touim/about.html', {'title':'About', 'images':images})
 
 

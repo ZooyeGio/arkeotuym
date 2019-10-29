@@ -22,7 +22,7 @@ ul.errorlist > li {
     right: 0;
     z-index: 1;
     box-shadow: 0 1px 7px black;
-    font-size: 13px;
+    font-size: 12px;
 }
 
 .navbar-brand {
@@ -211,8 +211,7 @@ h5 {
   font-family: Arial, sans-serif;
 }
 
-.cont-attrib {
-  /*border: 1px solid gray;*/
+/*.cont-attrib {
   padding: 15px;
   margin-top: 30px;
   margin-bottom: 50px;
@@ -221,7 +220,6 @@ h5 {
   text-align: center;
   text-transform: uppercase;
   font-size: 18pt;
-  /*color: #4CAF50; #F4623A;*/
   color: orange;
 }
 .text-center {
@@ -231,7 +229,7 @@ h5 {
   margin-left: 130px;
 }
 .atribs {
-  text-align: justify
+  text-align: justify;
 }
 .contacts {
   text-align: center;
@@ -239,4 +237,26 @@ h5 {
 .alink {
   text-decoration: none;
   color: #008CBA;
+}
+.please {
+  margin-left: 30px;
+  margin-top:70px;
+  color:orange;
+}*/
+.contenutext {
+  width:60%;
+  margin-left:auto;
+  margin-right:auto;
+}
+.ct-justy {
+  text-align:center;
+}
+.ct-centry {
+  text-align:justify;
+}
+.titly {
+  color: orange;
+}
+.espacy {
+  margin-bottom: 45px;
 }

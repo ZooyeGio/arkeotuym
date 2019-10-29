@@ -101,3 +101,13 @@ class Staticmap(models.Model):
 
     def __str__(self):
         return self.mapname
+
+
+class Images(models.Model):
+    id_img = models.IntegerField(primary_key=True)
+    imgname = models.CharField(max_length=250)
+    imgfile = models.FileField(default='')
+    author = models.CharField(max_length=250)
+
+    def __str__(self):
+        return self.imgname

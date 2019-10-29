@@ -140,7 +140,6 @@ CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
 LOGIN_REDIRECT_URL = 'touim-home'
 LOGIN_URL = 'login'
-# test
 
 # AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
 # AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
@@ -149,6 +148,6 @@ LOGIN_URL = 'login'
 # AWS_S3_FILE_OVERWRITE = False
 # AWS_DEFAULT_ACL = None
 
-# DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 django_heroku.settings(locals())
