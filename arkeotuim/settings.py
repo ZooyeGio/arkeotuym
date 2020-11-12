@@ -14,19 +14,14 @@ import os
 import django_heroku
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
+# BASE_DIR = ...
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'b_nd60%&ux*23(wt62wo#=*w8h5&6jxlz_0yalvu!kr$hn^^ik'
-# SECRET_KEY = os.environ.get('SECRET_KEY')
+# SECRET_KEY = ...
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = (os.environ.get('DEBUG_VALUE') == 'True')
-# test
+# DEBUG = ...
+
 ALLOWED_HOSTS = ['arkeotuym.herokuapp.com']
 
 
@@ -82,14 +77,12 @@ WSGI_APPLICATION = 'arkeotuim.wsgi.application'
 
 DATABASES = {
     'default': {
-        # 'ENGINE': 'django.db.backends.sqlite3',
-        # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME':  # name of the database
-        'USER':
-        'PASSWORD':
-        'HOST':  # localhost
-        'PORT': '5432',
+        # 'NAME': ...
+        # 'USER': ...
+        # 'PASSWORD': ...
+        # 'HOST': ...
+        # 'PORT': ...
     }
 }
 
