@@ -23,7 +23,7 @@ class UserUpdateForm(forms.ModelForm):
         model = User
         fields = ['username', 'email']
         labels = {
-		    'username':_('Имя пользователя')
+		    'username':_('Name of user')
 		}
 
 		

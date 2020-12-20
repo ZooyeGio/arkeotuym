@@ -27,17 +27,17 @@
             <!-- Mobiliers: -->
             <div class="panel panel-default">
                 <div class="panel-body" style="background-color: #C78E50; color: black;">
-                    <h4 style="color: black;"><b>Артефакты, найденные на стоянке {{ object.sitename }}</b></h4>
+                    <h4 style="color: black;">Artefacts of site <b>{{ object.sitename }}</b></h4>
                     {% if error_message %}
                         <p><strong>{{ error_message }}</strong></p>
                     {% endif %}
                     <table class="table">
                         <thead>
                         <tr>
-                            <th>Название</th>
-                            <th>Фото</th>
-                            <th>Культурная принадлежность</th>
-                            <th>delete</th>
+                            <th>Name</th>
+                            <th>Image</th>
+                            <th>Archaeological culture</th>
+                            <th>Delete</th>
                             <!-- <th>Удалить</th> -->
                         </tr>
                         </thead>
@@ -48,11 +48,11 @@
                                 <td>
                                     <a target="_blank" href="{{ mobilier.mob_logo.url }}">
                                         <button type="button" class="btn btn-default btn-xs">
-                                            <span class="glyphicon glyphicon-eye-open"></span>&nbsp; Посмотреть
+                                            <span class="glyphicon glyphicon-eye-open"></span>&nbsp; View
                                         </button>
                                     </a>
                                 </td>
-                                <td>Белькачинская культура</td>
+                                <td>Middle neolith culture</td>
                                 <td>
                                 {% if object.user == user %}
                                     <!-- <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'mobilier-delete' mobilier.id %}">Delete</a> -->
@@ -71,7 +71,7 @@
                         <div role="presentation">
                         {% if object.user == user %}
                             <a href="{% url 'mobilier_create' object.id %}" style="color: white;">
-                                <button type="button" class="btn" style="background-color: #A7522D">Добавить новый артефакт
+                                <button type="button" class="btn" style="background-color: #A7522D">Add new artifact
                                 </button>
                             </a>
                         {% endif %}
@@ -82,7 +82,7 @@
             <!-- BIBLIOGRAPY: -->
             <div class="panel panel-default" style="background-color: #11141B;">
                 <div class="panel-body" >
-                    <h4 style="color: gray;"><b>Все труды по стоянке</b></h4>
+                    <h4 style="color: gray;"><b>All publications about site</b></h4>
                     {% if error_message %}
                         <p><strong>{{ error_message }}</strong></p>
                     {% endif %}
@@ -109,7 +109,7 @@
                     <ul class="nav nav-pills" style="margin-bottom: 10px;">
                             <a href="{% url 'touim-biblio' %}" style="color: white;">
                                 <button type="button" class="btn btn-basic" style="background-color: #62643E">
-                                    Посмотреть всю библиографию
+                                    View all publications
                                 </button>
                             </a>
 <!--                         <div role="presentation">
@@ -144,13 +144,13 @@
                         {% else %}
                             <h3>No image to display</h3>
                         {% endif %}
-                    <h5><i>Топографический план стоянки</i></h5>
+                    <h5><i>Topographical plan of the site</i></h5>
                 </div>
                 <div class="panel-body">
                         {% for admini in object.admini_set.all %}
-                            <p><b>Категория памятника: </b>{{ admini.categ }}</p>
-                            <p><b>Тип: </b>{{ admini.vid_comm }}</p>
-                            <p><b>Использование: </b>{{ admini.utilisation }}</p>
+                            <p><b>Category of site: </b>{{ admini.categ }}</p>
+                            <p><b>Type: </b>{{ admini.vid_comm }}</p>
+                            <p><b>Usage: </b>{{ admini.utilisation }}</p>
                         {% endfor %} 
                 </div>
             </div>
@@ -158,6 +158,6 @@
     </div>
 </div> <!-- close site-container div -->
 {% else %}
-<h3 class="please">Пожалуйста, войдите в приложение под именем Postgres, чтобы увидеть данные о стоянках</h3>
+<h3 class="please">Please, login with postgres nickname == FIXME</h3>
 {% endif %}
 {% endblock content %}

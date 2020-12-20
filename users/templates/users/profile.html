@@ -22,12 +22,12 @@
     	<form method="POST" enctype="multipart/form-data">
     		{% csrf_token %}
     		<fieldset class="form-group">
-    			<legend class="border-bottom mb-4 profiletitre">Информация о профиле</legend>
+    			<legend class="border-bottom mb-4 profiletitre">My profile</legend>
     			{{ u_form|crispy }}
     			{{ p_form|crispy }}
     		</fieldset>
     		<div class="form-group">
-    			<button class="btn btn-primary" type="submit">Сохранить</button>
+    			<button class="btn btn-primary" type="submit">Save</button>
     		</div>
     	</form>
     </div>

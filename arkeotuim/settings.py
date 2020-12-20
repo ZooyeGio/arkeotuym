@@ -21,11 +21,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'b_nd60%&ux*23(wt62wo#=*w8h5&6jxlz_0yalvu!kr$hn^^ik'
 # SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = (os.environ.get('DEBUG_VALUE') == 'True')
+# DEBUG = (os.environ.get('DEBUG_VALUE') == 'True')
 # test
 ALLOWED_HOSTS = ['arkeotuym.herokuapp.com']
 
@@ -85,9 +84,9 @@ DATABASES = {
         # 'ENGINE': 'django.db.backends.sqlite3',
         # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'touim',
-        'USER': 'postgres',
-        'PASSWORD': '5578ars',
+        'NAME': 'archeo_gis',
+        'USER': 'bertha',
+        'PASSWORD': 'tbs7878',
         'HOST': '127.0.0.1',
         'PORT': '5432',
     }

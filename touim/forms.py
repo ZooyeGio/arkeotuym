@@ -18,25 +18,25 @@ class SiteForm(forms.ModelForm):
         fields = '__all__'
         exclude = ['user', 'biblio']
         labels = {
-            'oper':_('Тип архео операции'),
-            'sitename':_('Название стоянки'),
-            'infor':_('Информация'),
-            'descr': _('Описание'),
-            'site_logo': _('Изображение'),
-            'periode': _('Датировка'),
-            'coordx': _('Координаты по оси X'),
-            'coordy': _('Координаты по оси Y'),
-            'paleol': _('Палеолит'),
-            'discovered': _('Дата открытия'),
-            'bronze': _('Бронзовый век'),
-            'iron': _('Железный век'),
-            'mesol': _('Мезолит'),
-            'middle_age': _('Средневековье'),
-            'neol1': _('Ранний неолит'),
-            'neol2': _('Средний неолит'),
-            'neol3': _('Подзний неолит'),
-            'passport': _('Номер паспорта'),
-            'topo': _('Топо план'),
+            'oper':_('Type of operation'),
+            'sitename':_('Name of site'),
+            'infor':_('About'),
+            'descr': _('Description'),
+            'site_logo': _('Image'),
+            'periode': _('Dates'),
+            'coordx': _('coordinates X'),
+            'coordy': _('coordinates Y'),
+            'paleol': _('What'),
+            'discovered': _('Discovered in'),
+            'bronze': _('Bronze age'),
+            'iron': _('Iron age'),
+            'mesol': _('Mesolithic age'),
+            'middle_age': _('Middle age'),
+            'neol1': _('Early neolithic'),
+            'neol2': _('Middle neolithic'),
+            'neol3': _('Late neolithic неолит'),
+            'passport': _('Document numer'),
+            'topo': _('Plans topographic'),
         }
 
 
@@ -54,8 +54,8 @@ class MobiliersCreateForm(forms.ModelForm):
         model = Mobiliers
         fields = ['mob_nom', 'mob_logo']
         labels = {
-            'mob_nom':_('Название'),
-            'mob_logo':_('Изображение')
+            'mob_nom':_('Name'),
+            'mob_logo':_('Image')
         }
         help_texts = {
             'mob_nom': _('Some useful help text.'),
@@ -69,13 +69,13 @@ class BiblioCreateForm(forms.ModelForm):
         fields = '__all__'
         labels = {
             # 'id_biblio':_('N°'),
-            'titre':_('Название'),
-            'autor':_('Автор'),
-            'year':_('Год'),
-            'tip':_('Тип'),
-            'coll':_('Коллекция'),
-            'edition':_('Издательство'),
-            'pages':_('Страницы'),
+            'titre':_('Title'),
+            'autor':_('Author'),
+            'year':_('Year'),
+            'tip':_('Type'),
+            'coll':_('Collection'),
+            'edition':_('Edition'),
+            'pages':_('Pages'),
         }
 
     sites = forms.ModelMultipleChoiceField(queryset=Sites.objects.all())
