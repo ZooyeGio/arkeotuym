@@ -1,2 +1,2 @@
-# arkeotuym
-Djnago application for archaeological data
+# Arkeotuym
+Web application for recording, visualizing and managing archaeological data
