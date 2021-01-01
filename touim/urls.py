@@ -13,11 +13,6 @@ from . import views
 from django.conf import settings
 from django.conf.urls.static import static
 
-# from users import views as user_views
-# from django.conf.urls import url
-# from django.contrib.staticfiles.urls import staticfiles_urlpatterns
-
-
 urlpatterns = [
     # path('', SitesListView.as_view(), name='touim-home'),  # without search
     path('', views.home, name='touim-home'),  #for search

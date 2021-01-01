@@ -40,14 +40,6 @@ class SiteForm(forms.ModelForm):
         }
 
 
-# class home(forms.ModelForm):
-
-#     class Meta:
-#         model = Sites
-#         fields = '__all__'
-#         paginate_by = 2
-
-
 class MobiliersCreateForm(forms.ModelForm):
 
     class Meta:
@@ -68,7 +60,6 @@ class BiblioCreateForm(forms.ModelForm):
         model = Biblio
         fields = '__all__'
         labels = {
-            # 'id_biblio':_('N°'),
             'titre':_('Title'),
             'autor':_('Author'),
             'year':_('Year'),
@@ -106,8 +97,3 @@ class BiblioCreateForm(forms.ModelForm):
 
         return instance
 
-
-# class BiblioCreateForm(forms.ModelForm):
-#     class Meta:
-#         model = Biblio
-#         fields = ['id_biblio', 'titre', 'autor', 'year', 'site']
