@@ -104,9 +104,9 @@ class SitesDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 
 class MobiliersListView(ListView):
 	model = Mobiliers
-	template_name = 'touim/mobilier.html'  # <app>/<model>_<viewtype>.html
+	template_name = 'touim/mobilier.html'  # pattern: <app>/<model>_<viewtype>.html
 	context_object_name = 'mobiliers'
-	# ordering = ['-date_posted']
+	ordering = ['-date_posted']
 	paginate_by = 4
 
 
@@ -194,7 +194,6 @@ def biblio_create(request):
                           {'biblios': biblios})
     else:
         form = BiblioCreateForm()
-        # print("Else")
     return render(request, 'touim/biblio_create.html', {'form': form})
 
 
