@@ -67,17 +67,6 @@ class Mobiliers(models.Model):
     def __str__(self):
         return self.mob_nom
 
-    # def save(self, *args, **kwargs):
-    #     super().save(*args, **kwargs)
-
-    #     img = Image.open(self.mob_logo.path)
-
-    #     if img.height > 300 or img.width > 300:
-    #         output_size = (300, 300)
-    #         img.thumbnail(output_size)
-    #         img.save(self.mob_logo.path)
-
-
 class Admini(models.Model):
     id_admini = models.IntegerField(primary_key=True)
     categ = models.CharField(max_length=250)

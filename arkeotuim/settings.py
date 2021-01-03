@@ -28,7 +28,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 <<<<<<< HEAD
 
 =======
->>>>>>> 7ec1f25cab5334bfc1e80c741bf4383e5c6ba749
+>>>>>>>
 ALLOWED_HOSTS = ['arkeotuym.herokuapp.com']
 
 
