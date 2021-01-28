@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
-import django_heroku
+#import django_heroku
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -22,13 +22,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 # SECRET_KEY = os.environ.get('SECRET_KEY')
+SECRET_KEY = 'xjfiuno=4htcr6hon0y3^yh^@o2+-%^t&n!r-m_@o6a%qp(p#m'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = (os.environ.get('DEBUG_VALUE') == 'True')
-<<<<<<< HEAD
+#DEBUG = (os.environ.get('DEBUG_VALUE') == 'True')
+DEBUG = True
 
-=======
->>>>>>>
 ALLOWED_HOSTS = ['arkeotuym.herokuapp.com']
 
 
@@ -37,7 +36,6 @@ ALLOWED_HOSTS = ['arkeotuym.herokuapp.com']
 INSTALLED_APPS = [
     'touim.apps.TouimConfig',
     'users.apps.UsersConfig',
-    'crispy_forms',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -150,4 +148,4 @@ LOGIN_URL = 'login'
 
 # DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
-django_heroku.settings(locals())
+# django_heroku.settings(locals())
