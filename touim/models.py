@@ -48,11 +48,11 @@ class Sites(models.Model):
     def __str__(self):
         return self.sitename
 
-    class Meta:
-        ordering = ('sitename',)
-        
     # def __str__(self):
     #     return f'{self.id}'  # user.username
+    
+    class Meta:
+        ordering = ('sitename',)
 
     def get_absolute_url(self):
         return reverse('site-detail', kwargs={'pk':self.pk})

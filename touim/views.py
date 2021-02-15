@@ -2,12 +2,12 @@ from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.models import User
 from django.views.generic import (
-	ListView, 
-	DetailView, 
-	CreateView,
-	UpdateView,
-	DeleteView
-	)
+    ListView, 
+    DetailView, 
+    CreateView,
+    UpdateView,
+    DeleteView
+    )
 from .models import Sites, Biblio, Staticmap, Mobiliers, Images
 from .forms import SiteForm, MobiliersCreateForm, BiblioCreateForm
 from django.utils.translation import gettext_lazy as _
@@ -43,71 +43,71 @@ def home(request):
 
 
 class SitesDetailView(DetailView):
-	model = Sites
-	mobiliers = Mobiliers.objects.all()
-	biblios = Biblio.objects.all()
+    model = Sites
+    mobiliers = Mobiliers.objects.all()
+    biblios = Biblio.objects.all()
 
 
 def site_create(request):
-	s_form = SiteForm(request.POST or None, request.FILES or None)
-	if s_form.is_valid():
-		site = s_form.save(commit=False)
-		site.user = request.user
-		site.site_logo = request.FILES['site_logo']
-		site.topo = request.FILES['topo']
-		file_type = site.site_logo.url.split('.')[-1]
-		file_typetopo = site.topo.url.split('.')[-1]
-		file_type = file_type.lower()
-		file_typetopo = file_typetopo.lower()
-		if file_type and file_typetopo not in IMAGE_FILE_TYPES:
-			context = {
-			'site': site,
-			's_form': s_form,
-			'error_message': 'Image file must be PNG, JPG, or JPEG',
-			}
-			return render(request, 'touim/sites_create.html', context)
-		site.save()
-		object = site
-		return render(request, 'touim/sites_detail.html', {'object':object})
-	context = {"s_form": s_form,}
-	return render(request, 'touim/site_create.html', context)
+    s_form = SiteForm(request.POST or None, request.FILES or None)
+    if s_form.is_valid():
+        site = s_form.save(commit=False)
+        site.user = request.user
+        site.site_logo = request.FILES['site_logo']
+        site.topo = request.FILES['topo']
+        file_type = site.site_logo.url.split('.')[-1]
+        file_typetopo = site.topo.url.split('.')[-1]
+        file_type = file_type.lower()
+        file_typetopo = file_typetopo.lower()
+        if file_type and file_typetopo not in IMAGE_FILE_TYPES:
+            context = {
+            'site': site,
+            's_form': s_form,
+            'error_message': 'Image file must be PNG, JPG, or JPEG',
+            }
+            return render(request, 'touim/sites_create.html', context)
+        site.save()
+        object = site
+        return render(request, 'touim/sites_detail.html', {'object':object})
+    context = {"s_form": s_form,}
+    return render(request, 'touim/site_create.html', context)
 
 
 # fonctionne mais ne modifie pas les images:
 class SitesUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
-	model = Sites
-	fields = '__all__'
-	exclude = ['user', 'biblio']
+    model = Sites
+    fields = '__all__'
+    exclude = ['user', 'biblio']
 
 
-	def form_valid(self, form):
-		form.instance.user = self.request.user
-		return super().form_valid(form)
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
 
-	def test_func(self):
-		site = self.get_object()
-		if self.request.user == site.user:
-			return True
-		return False
+    def test_func(self):
+        site = self.get_object()
+        if self.request.user == site.user:
+            return True
+        return False
 
 
 class SitesDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
-	model = Sites
-	success_url = '/'
+    model = Sites
+    success_url = '/'
 
-	def test_func(self):
-		site = self.get_object()
-		if self.request.user == site.user:
-			return True
-		return False
+    def test_func(self):
+        site = self.get_object()
+        if self.request.user == site.user:
+            return True
+        return False
 
 
 class MobiliersListView(ListView):
-	model = Mobiliers
-	template_name = 'touim/mobilier.html'  # pattern: <app>/<model>_<viewtype>.html
-	context_object_name = 'mobiliers'
-	ordering = ['-date_posted']
-	paginate_by = 4
+    model = Mobiliers
+    template_name = 'touim/mobilier.html'  # pattern: <app>/<model>_<viewtype>.html
+    context_object_name = 'mobiliers'
+    ordering = ['-date_posted']
+    paginate_by = 4
 
 
 def mobilier_create(request, site_id):
@@ -147,39 +147,39 @@ def mobilier_create(request, site_id):
 
 
 class MobiliersDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
-	model = Mobiliers
-	success_url = '/'
-	sites = Sites.objects.all()
+    model = Mobiliers
+    success_url = '/'
+    sites = Sites.objects.all()
 
-	def test_func(self):
-		mobilier = self.get_object()
-		if self.request.user == mobilier.user:
-			return True
-		return False
+    def test_func(self):
+        mobilier = self.get_object()
+        if self.request.user == mobilier.user:
+            return True
+        return False
 
 
 def about(request):
-	images = Images.objects.all()
-	return render(request, 'touim/about.html', {'title':'About', 'images':images})
+    images = Images.objects.all()
+    return render(request, 'touim/about.html', {'title':'About', 'images':images})
 
 
 def layers(request):
-	return render(request, 'touim/layers.html')
+    return render(request, 'touim/layers.html')
 
 
 def layers2(request):
-	sites = Sites.objects.all()
-	return render(request, 'touim/layers2.html', {'sites':sites})
+    sites = Sites.objects.all()
+    return render(request, 'touim/layers2.html', {'sites':sites})
 
 
 def carto(request):
-	cartos = Staticmap.objects.all()
-	return render(request, 'touim/cartography.html', {'cartos':cartos})
+    cartos = Staticmap.objects.all()
+    return render(request, 'touim/cartography.html', {'cartos':cartos})
 
 
 def biblio(request):
-	biblios = Biblio.objects.all()
-	return render(request, 'touim/bibliography.html', {'biblios':biblios})
+    biblios = Biblio.objects.all()
+    return render(request, 'touim/bibliography.html', {'biblios':biblios})
 
 
 @login_required

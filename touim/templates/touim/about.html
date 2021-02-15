@@ -9,7 +9,6 @@
     <div class="row">
         <!-- Left sidebar: -->
         <div class="col-sm-6 col-md-6" style="color: gray;">
-            <!-- <div class="panel panel-default" style="background-color: #A09571;"> --> <!--#E3C67D/ #EBEAEC -->
                 <div class="panel-body" style="margin-left: 30px;">
                     <h2 class="titly">This is Arkeotuym application</h2>
                     <p>Это приложение позволяет записывать и хранить данные по археологии Якутии (стоянки, найденные на них артефакты, библиографические источники, карты и графики).</p>
@@ -33,43 +32,37 @@
         </div>
         <!-- Right sidebar (images + info admini) -->
         <div class="col-sm-6 col-md-6">
-            <!-- <div class="panel panel-default" style="background-color: #A09571;"> -->
-                <div class="panel-body" style="margin-top: 30px;">
-                    {% for image in images.all %}
-                        {% if image.id_img == 1 %}
-                            <img src="{{ image.imgfile.url }}" style="height: 410px;">
-                        {% else %}
-                        {% endif %}
-                    {% endfor %}
-                </div>
-            <!-- </div> -->
-        </div>
-    </div>
-
-
-            <!-- <div class="panel panel-default espacy" style="background-color: #11141B; color: gray;"> -->
-
-             <div class="panel-body" style="color: gray;">
-                    <hr style="width:55%;" />
-                    <h3 class="contenutext ct-justy titly">ATTRIBUTIONS</h3>
-                    <hr style="width:2%;" />
-                    <div class="contenutext espacy">
-                        <p style="text-align: center;">Duis aute irure. Lorem ipsum dolor sit amet, consectetur adipiscing -- https://loremipsum.io/</p>
-                    </div>
-                    <hr style="width:55%;" />
-                    <h3 class="contenutext ct-justy titly">CONTACTS</h3>
-                    <hr style="width:2%;" />
-                    <div class="contenutext ct-justy espacy">
-                        <span class="glyphicon glyphicon-phone-alt"></span> +7 900 000 00 00 -- 
-                        <span class="glyphicon glyphicon-envelope"></span> kte.ent@gmail.com   
-                    </div>
-                </div>
+            <div class="panel-body" style="margin-top: 30px;">
                 {% for image in images.all %}
-                    {% if image.id_img == 2 %}
-                        <img src="{{ image.imgfile.url }}" style="width:100%;margin-top:20px;float: right;">
+                    {% if image.id_img == 1 %}
+                        <img src="{{ image.imgfile.url }}" style="height: 410px;">
                     {% else %}
                     {% endif %}
                 {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class="panel-body" style="color: gray;">
+        <hr style="width:55%;" />
+        <h3 class="contenutext ct-justy titly">ATTRIBUTIONS</h3>
+        <hr style="width:2%;" />
+        <div class="contenutext espacy">
+            <p style="text-align: center;">Duis aute irure. Lorem ipsum dolor sit amet, consectetur adipiscing -- https://loremipsum.io/</p>
+        </div>
+        <hr style="width:55%;" />
+        <h3 class="contenutext ct-justy titly">CONTACTS</h3>
+        <hr style="width:2%;" />
+        <div class="contenutext ct-justy espacy">
+            <span class="glyphicon glyphicon-phone-alt"></span> +7 900 000 00 00 -- 
+            <span class="glyphicon glyphicon-envelope"></span> kte.ent@gmail.com   
+        </div>
+    </div>
+        {% for image in images.all %}
+            {% if image.id_img == 2 %}
+                <img src="{{ image.imgfile.url }}" style="width:100%;margin-top:20px;float: right;">
+            {% else %}
+            {% endif %}
+        {% endfor %}
         </div>
     </div>
 </div>
