@@ -28,7 +28,7 @@ SECRET_KEY = 'xjfiuno=4htcr6hon0y3^yh^@o2+-%^t&n!r-m_@o6a%qp(p#m'
 #DEBUG = (os.environ.get('DEBUG_VALUE') == 'True')
 DEBUG = True
 
-ALLOWED_HOSTS = ['arkeotuym.herokuapp.com']
+# ALLOWED_HOSTS = ['arkeotuym.herokuapp.com']
 
 
 # Application definition
@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'crispy_forms',
     'storages'
 ]
 
@@ -83,9 +84,9 @@ WSGI_APPLICATION = 'arkeotuim.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'archeo_gis',
-        'USER': 'bertha',
-        'PASSWORD': 'tbs7878',
+        'NAME': 'touim_db',
+        'USER': 'postgres',
+        'PASSWORD': '557878ars',
         'HOST': '127.0.0.1',
         'PORT': '5432',
     }

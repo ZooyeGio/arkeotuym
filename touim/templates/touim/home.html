@@ -8,7 +8,7 @@
                 {% if user.id == 1 %}
                 <a href="{% url 'site_create' %}" style="color: white;">
                     <button class="btn btn-success">
-                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp; ASS SITE
+                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp; ADD SITE
                     </button>
                 </a>
                 {% endif %}
@@ -30,8 +30,8 @@
                         <tbody style="color: white;">
                             {% for site in sites %}
                                 <tr>
-                                    <td>{{ site.id }}</td>
-                                    <td><a href="{% url 'site-detail' site.id %}">{{ site.sitename }}</a></td>
+                                    <td>{{ site.id_site }}</td>
+                                    <td><a href="{% url 'site-detail' site.id_site %}">{{ site.sitename }}</a></td>
                                     <td>{{ site.periode }}</td>
                                     <td><img src="{{ site.site_logo.url }}" style="height: 30px;"></td>
                                 </tr>
