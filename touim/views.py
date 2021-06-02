@@ -8,8 +8,8 @@ from django.views.generic import (
     UpdateView,
     DeleteView
     )
-from .models import Sites, Biblio, Staticmap, Mobiliers, Images
-from .forms import SiteForm, MobiliersCreateForm, BiblioCreateForm
+from .models import Sites, Staticmap, Mobiliers, Images
+from .forms import SiteForm, MobiliersCreateForm
 from django.utils.translation import gettext_lazy as _
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
@@ -45,7 +45,6 @@ def home(request):
 class SitesDetailView(DetailView):
     model = Sites
     mobiliers = Mobiliers.objects.all()
-    biblios = Biblio.objects.all()
 
 
 def site_create(request):
@@ -53,13 +52,20 @@ def site_create(request):
     if s_form.is_valid():
         site = s_form.save(commit=False)
         site.user = request.user
-        site.site_logo = request.FILES['site_logo']
-        site.topo = request.FILES['topo']
-        file_type = site.site_logo.url.split('.')[-1]
-        file_typetopo = site.topo.url.split('.')[-1]
+        site.site_img = request.FILES['site_img']
+        # site.topo = request.FILES['topo']
+        file_type = site.site_img.url.split('.')[-1]
+        # file_typetopo = site.topo.url.split('.')[-1]
         file_type = file_type.lower()
-        file_typetopo = file_typetopo.lower()
-        if file_type and file_typetopo not in IMAGE_FILE_TYPES:
+        # file_typetopo = file_typetopo.lower()
+        # if file_type and file_typetopo not in IMAGE_FILE_TYPES:
+        #     context = {
+        #     'site': site,
+        #     's_form': s_form,
+        #     'error_message': 'Image file must be PNG, JPG, or JPEG',
+        #     }
+        #     return render(request, 'touim/sites_create.html', context)
+        if file_type not in IMAGE_FILE_TYPES:
             context = {
             'site': site,
             's_form': s_form,
@@ -125,8 +131,8 @@ def mobilier_create(request, site_id):
                 return render(request, 'touim/mobilier_create.html', context)
         mobilier = m_form.save(commit=False)
         mobilier.site = site
-        mobilier.mob_logo = request.FILES['mob_logo']
-        file_type = mobilier.mob_logo.url.split('.')[-1]
+        mobilier.mob_img = request.FILES['mob_img']
+        file_type = mobilier.mob_img.url.split('.')[-1]
         file_type = file_type.lower()
         object = site
         if file_type not in IMAGE_FILE_TYPES:
@@ -175,30 +181,3 @@ def layers2(request):
 def carto(request):
     cartos = Staticmap.objects.all()
     return render(request, 'touim/cartography.html', {'cartos':cartos})
-
-
-def biblio(request):
-    biblios = Biblio.objects.all()
-    return render(request, 'touim/bibliography.html', {'biblios':biblios})
-
-
-@login_required
-def biblio_create(request):
-    if request.method == "POST":
-        form = BiblioCreateForm(request.POST)
-        if form.is_valid():
-            biblio = form.save(commit=False)
-            biblio.save()
-            biblios = Biblio.objects.filter()
-            return render(request, 'touim/bibliography.html',
-                          {'biblios': biblios})
-    else:
-        form = BiblioCreateForm()
-    return render(request, 'touim/biblio_create.html', {'form': form})
-
-
-def biblio_delete(request, site_id, biblio_id):
-    site = get_object_or_404(Sites, pk=site_id)
-    mobilier = Mobiliers.objects.get(pk=mobilier_id)
-    mobilier.delete()
-    return render(request, 'touim/detail.html', {'site': site})

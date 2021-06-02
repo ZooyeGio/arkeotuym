@@ -1,6 +1,5 @@
 {% extends "touim/base.html" %}
 {% block content %}
-{% if user.id == 1 or user.id == 12 %}
 <div class="container-fluid songs-container">
     <div class="row">
         <!-- Left sidebar: -->
@@ -10,16 +9,12 @@
                     <!-- update and delete site -->
                     
                         <p style="text-align: right;">
-                            <a class="btn btn-primary btn-sm mt-1 mb-1" href="{% url 'site-update' object.id %}">Редактировать</a>
-                            <!-- <a href="{% url 'site-update' object.id %}"><button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-edit"></span></button></a> -->
-                            <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'site-delete' object.id %}">Удалить</a>
-                            <!-- <a href="{% url 'site-delete' object.id %}"><button type="button" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></button></a>  -->              
+                            <a class="btn btn-primary btn-sm mt-1 mb-1" href="{% url 'site-update' object.id_site %}">Редактировать</a>
+                            <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'site-delete' object.id_site %}">Удалить</a>
                         </p>
                                      
                     <p><h2>{{ object.sitename }}</h2></p>
-                    <p><b>Период: </b>{{ object.periode }}</p>
-                    <p><b>Год открытия: </b>{{ object.discovered }}</p>
-                    <p><b>Информация: </b>{{ object.infor }}</p>
+                    <p><b>Период: </b>{{ object.date }}</p>
                     <p><b>Описание: </b>{{ object.descr }}</p>
                 </div>
             </div>
@@ -46,7 +41,7 @@
                             <tr>
                                 <td>{{ mobilier.mob_nom }}</td>
                                 <td>
-                                    <a target="_blank" href="{{ mobilier.mob_logo.url }}">
+                                    <a target="_blank" href="{{ mobilier.mob_img.url }}">
                                         <button type="button" class="btn btn-default btn-xs">
                                             <span class="glyphicon glyphicon-eye-open"></span>&nbsp; View
                                         </button>
@@ -70,7 +65,7 @@
                     <ul class="nav nav-pills" style="margin-bottom: 10px;">
                         <div role="presentation">
                         {% if object.user == user %}
-                            <a href="{% url 'mobilier_create' object.id %}" style="color: white;">
+                            <a href="{% url 'mobilier_create' object.id_site %}" style="color: white;">
                                 <button type="button" class="btn" style="background-color: #A7522D">Add new artifact
                                 </button>
                             </a>
@@ -79,72 +74,19 @@
                     </ul>
                 </div>
             </div>
-            <!-- BIBLIOGRAPY: -->
-            <div class="panel panel-default" style="background-color: #11141B;">
-                <div class="panel-body" >
-                    <h4 style="color: gray;"><b>All publications about site</b></h4>
-                    {% if error_message %}
-                        <p><strong>{{ error_message }}</strong></p>
-                    {% endif %}
-                    <table class="table" style="color: gray;">
-                        <thead>
-                        <tr>
-                            <th>Titre</th>
-                            <th>Collection</th>
-                            <th>Autor</th>
-                            <th>Year</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                            {% for bib in object.biblio.all %}
-                            <tr>
-                                <td>{{ bib.titre }}</td>
-                                <td>{{ bib.coll }}</td>
-                                <td>{{ bib.autor }}</td>
-                                <td>{{ bib.year }}</td>
-                            </tr>
-                            {% endfor %}
-                        </tbody>
-                    </table>
-                    <ul class="nav nav-pills" style="margin-bottom: 10px;">
-                            <a href="{% url 'touim-biblio' %}" style="color: white;">
-                                <button type="button" class="btn btn-basic" style="background-color: #62643E">
-                                    View all publications
-                                </button>
-                            </a>
-<!--                         <div role="presentation">
-                            <a href="#" style="color: white;">
-                                <button type="button" class="btn btn-basic" style="background-color: #62643E">
-                                    Пополнить библиографию
-                                </button>
-                            </a>
-                        </div> -->
-                    </ul>
-                </div>
-            </div>
         </div>
         <!-- Right sidebar (images + info admini) -->
         <div class="col-sm-4 col-md-3">
             <div class="panel panel-default" style="background-color: #A09571;">
                 <div class="panel-body">
-                        {% if object.site_logo %}
-                            <a  target="_blank" href="{{ object.site_logo.url }}">
-                                <img src="{{ object.site_logo.url }}" class="img-responsive"/>
+                        {% if object.site_img %}
+                            <a  target="_blank" href="{{ object.site_img.url }}">
+                                <img src="{{ object.site_img.url }}" class="img-responsive"/>
                             </a>
                         {% else %}
                             <h3>No image to display</h3>
                         {% endif %}
                     <h5><i>Фото местности</i></h5>
-                </div>
-                <div class="panel-body">
-                        {% if object.site_logo %}
-                            <a  target="_blank" href="{{ object.topo.url }}">
-                                <img src="{{ object.topo.url }}" class="img-responsive">
-                            </a>
-                        {% else %}
-                            <h3>No image to display</h3>
-                        {% endif %}
-                    <h5><i>Topographical plan of the site</i></h5>
                 </div>
                 <div class="panel-body">
                         {% for admini in object.admini_set.all %}
@@ -157,7 +99,5 @@
         </div>
     </div>
 </div> <!-- close site-container div -->
-{% else %}
 <h3 class="please">Please, login with postgres nickname == FIXME</h3>
-{% endif %}
 {% endblock content %}

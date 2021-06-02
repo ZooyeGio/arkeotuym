@@ -1,49 +1,17 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.urls import reverse
-
 from PIL import Image
-
-class Biblio(models.Model):
-    id_biblio = models.IntegerField(primary_key=True)
-    titre = models.CharField(max_length=250)
-    autor = models.CharField(max_length=250)
-    year = models.IntegerField()
-    tip = models.CharField(max_length=50, default='')
-    coll = models.CharField(max_length=250, default='')
-    edition = models.CharField(max_length=250, default='')
-    pages = models.CharField(max_length=30, default='')
-
-    def __str__(self):
-        return self.titre
-
-    class Meta:
-        ordering = ('titre',)
 
 
 class Sites(models.Model):
-    id = models.IntegerField(primary_key=True)
+    id_site = models.AutoField(primary_key=True)
     user = models.ForeignKey(User, default=1, on_delete=models.CASCADE)
-    oper = models.CharField(max_length=250)
     sitename = models.CharField(max_length=500)
-    infor = models.CharField(max_length=9000, default='')
+    oper = models.CharField(max_length=250)
     descr = models.CharField(max_length=9000, default='')
-    site_logo = models.FileField(default='pasdimage.png')
-    periode = models.CharField(max_length=300)
-    coordx = models.FloatField()
-    coordy = models.FloatField()
-    paleol = models.CharField(max_length=300)
-    bronze = models.CharField(max_length=30)
-    discovered = models.IntegerField()
-    iron = models.CharField(max_length=30)
-    mesol = models.CharField(max_length=30)
-    middle_age = models.CharField(max_length=30)
-    neol1 = models.CharField(max_length=30)
-    neol2 = models.CharField(max_length=30)
-    neol3 = models.CharField(max_length=30)
-    passport = models.CharField(max_length=20)
-    topo = models.FileField(default='pasdimage.png')
-    biblio = models.ManyToManyField(Biblio)
+    site_img = models.FileField(default='pasdimage.png')
+    date = models.CharField(max_length=300)
 
     def __str__(self):
         return self.sitename
@@ -61,7 +29,7 @@ class Sites(models.Model):
 class Mobiliers(models.Model):
     site = models.ForeignKey(Sites, on_delete=models.CASCADE)
     mob_nom = models.CharField(max_length=250)
-    mob_logo = models.FileField(default='pasdimage.png')
+    mob_img = models.FileField(default='pasdimage.png')
     user = models.ForeignKey(User, default=1, on_delete=models.CASCADE)
 
     def __str__(self):

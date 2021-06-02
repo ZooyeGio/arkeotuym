@@ -23,9 +23,7 @@ urlpatterns = [
     path('about/', views.about, name='touim-about'),
     path('layers/', views.layers, name='touim-layers'),
     path('layers2/', views.layers2, name='touim-layers2'),
-    path('carto/', views.carto, name='touim-carto'),
-    path('biblio/', views.biblio, name='touim-biblio'),
-    path('biblio/biblio_create/', views.biblio_create, name='biblio_create')
+    path('carto/', views.carto, name='touim-carto')
 ]
 
 if settings.DEBUG:
