@@ -149,7 +149,6 @@ LOGIN_URL = 'login'
 
 # DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
-# or enable this and disable the default_aut_field var in apps.py
-# DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 
 # django_heroku.settings(locals())
