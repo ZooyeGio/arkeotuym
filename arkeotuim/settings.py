@@ -84,9 +84,9 @@ WSGI_APPLICATION = 'arkeotuim.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'touim_db',
+        'NAME': 'arkeobase_development',
         'USER': 'postgres',
-        'PASSWORD': '557878ars',
+        'PASSWORD': '557878ars!!',
         'HOST': '127.0.0.1',
         'PORT': '5432',
     }
@@ -148,5 +148,8 @@ LOGIN_URL = 'login'
 # AWS_DEFAULT_ACL = None
 
 # DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+# or enable this and disable the default_aut_field var in apps.py
+# DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 
 # django_heroku.settings(locals())
