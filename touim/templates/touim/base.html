@@ -68,9 +68,9 @@
             <ul class="nav navbar-nav navbar-right">
                 {% if user.is_authenticated %}
                   <li class=""><a href="{% url 'profile' %}">Profile</a></li>
-                  <li class=""><a href="{% url 'logout' %}"><span class="glyphicon glyphicon-off" aria-hidden="true"></span>&nbsp; Выйти</a></li>
+                  <li class=""><a href="{% url 'logout' %}"><span class="glyphicon glyphicon-off" aria-hidden="true"></span>&nbsp; Log out</a></li>
                 {% else %}
-                  <li class=""><a href="{% url 'login' %}">Ligin</a></li>
+                  <li class=""><a href="{% url 'login' %}">Login</a></li>
                   <li class=""><a href="{% url 'register' %}">Register</a></li>
                 {% endif %}
             </ul>
