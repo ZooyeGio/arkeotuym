@@ -112,7 +112,7 @@ class MobiliersListView(ListView):
     model = Mobiliers
     template_name = 'touim/mobilier.html'  # pattern: <app>/<model>_<viewtype>.html
     context_object_name = 'mobiliers'
-    ordering = ['-date_posted']
+    ordering = ['id']
     paginate_by = 4
 
 
