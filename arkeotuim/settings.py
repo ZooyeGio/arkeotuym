@@ -42,8 +42,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'crispy_forms',
-    'storages'
+    # 'crispy_forms',
+    # 'storages'
 ]
 
 MIDDLEWARE = [
@@ -84,7 +84,7 @@ WSGI_APPLICATION = 'arkeotuim.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'arkeobase_development',
+        'NAME': 'arkeobase_dev',
         'USER': 'postgres',
         'PASSWORD': '557878ars!!',
         'HOST': '127.0.0.1',
