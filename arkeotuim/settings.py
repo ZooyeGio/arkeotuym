@@ -28,7 +28,7 @@ SECRET_KEY = 'xjfiuno=4htcr6hon0y3^yh^@o2+-%^t&n!r-m_@o6a%qp(p#m'
 #DEBUG = (os.environ.get('DEBUG_VALUE') == 'True')
 DEBUG = True
 
-# ALLOWED_HOSTS = ['arkeotuym.herokuapp.com']
+# ALLOWED_HOSTS = ['arkeobase.herokuapp.com']
 
 
 # Application definition
@@ -41,9 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
-    # 'crispy_forms',
-    # 'storages'
+    'django.contrib.staticfiles'
 ]
 
 MIDDLEWARE = [
